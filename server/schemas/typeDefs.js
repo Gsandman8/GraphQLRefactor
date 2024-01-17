@@ -4,7 +4,7 @@ type User {
     username: String!
     email: String!
     password: String!
-    savedBooks: [String]
+    savedBooks: [Book] @connection(key: "Book")
     bookCount: Int
 }
 
@@ -31,7 +31,7 @@ type Mutations
     AddUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     saveBook(authors: [String], description: String!, bookId: String!, image: String, link: String, title: String!): User
-    deleteBook(bookId: String!): User
+    removeBook(bookId: String!): User
 `
 
 module.exports = typeDefs;
